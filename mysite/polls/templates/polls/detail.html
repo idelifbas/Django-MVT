@@ -1,0 +1,47 @@
+{% extends "homebase.html" %}
+
+{% block title %}Anket Detayı{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block body %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Anket Detayı</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            {% load static %}
+            <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css'%}">
+
+            Anket Soruları <br>
+                {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                  <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No polls are available.</p>
+                {% endif %}
+            </form>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+{% endblock %}
